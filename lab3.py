@@ -46,6 +46,7 @@ tmp = (n % 2)
 
 print("The number is even: " + str(tmp == 0))
 
+
 # Q5
 '''
 First; 
@@ -61,6 +62,7 @@ And the remainder of floor division by 5 is equal to 4.0
 So, 
 val = 4.0 (which is a float)
 '''
+
 
 # Q6
 '''
@@ -82,6 +84,7 @@ tmp = float(-17 // 5)
 val = tmp * 2 ** 2
 print(val)
 '''
+
 
 # Q7
 temp = float(input("Please enter you body temperature: "))
