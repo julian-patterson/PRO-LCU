@@ -50,7 +50,6 @@ print("The number is even: " + str(tmp == 0))
 # Q5
 '''
 First; 
-
 tmp = float( 17 // 5)
 17 // 5 = 3 (since 17 / 5 = 3.4)
 float(17 // 5) = 3.0
@@ -72,7 +71,6 @@ tmp = float(-17 // 5)
 float(-17 // 5) = -4.0
 
 Then; 
-
 val = tmp * 2 ** 2
 tmp*2 = -8.0
 
