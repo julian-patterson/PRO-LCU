@@ -3,19 +3,30 @@ Julian Patterson 2131249
 420-LCU Computer Programming Lab 3
 S. Hilal, instructor
 '''
+
 # Q1
 x1 = int(input("Enter an integer: "))
 x2 = int(input("Enter an integer: "))
-x3 = input("Enter a float: ")
+x3 = float(input("Enter a float: "))
 
+# Simply adding all of the components together. Making sure x1-3 are all strings in order to be adding together in a sentence
 print("You have entered: " + str(x1) + ", " + str(x2) + " and " + str(x3))
 
-# This is the sum of x1 and x2
-print("The sum of x1 and x2: " + str((int(x1)+int(x2))))
-print("The product of x1 and x3: " + str((int(x1)*float(x3))))
-print("The floor division of x1 by x2: " + str((int(x1) // int(x2))))
-print("The division of x1 by x2: " + str((int(x1)/int(x2))))
-print("The floor division of x3 by x1: " + str((float(x3)//int(x1))))
+# This is just the sum of x1 and x2. This will result in an integer since both x1 and x2 are integers
+print("The sum of x1 and x2: " + str((x1+x2)))
+
+# This is the product of x1 and x3. This will result in a float since x3 is a float
+print("The product of x1 and x3: " + str(x1*x3))
+
+# This is the floor division of x1 by x2. This will result in an integer since they are both integers
+print("The floor division of x1 by x2: " + str(x1 // x2))
+
+# This is the division of x1 by x2. This will result in a float since division always results in floats
+print("The division of x1 by x2: " + str((x1/x2)))
+
+# This is the floor division of x3 and x1. This will result in a float since x3 is a float
+print("The floor division of x3 by x1: " + str(x3//x1))
+
 
 # Q2
 y = int(input("Enter an integer between 12 and 100: "))
