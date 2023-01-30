@@ -35,10 +35,12 @@ print("The number in decimal is: " + str(y))
 print("The number in binary is: " + bin(y))
 print("The number in hex is: " + hex(y))
 
+
 # Q3
 n = int(input("Enter an integer: "))
 
 print("The number is positive: " + str((n > 0)))
+
 
 # Q4
 n = int(input("Please enter a positive integer: "))
@@ -72,15 +74,11 @@ float(-17 // 5) = -4.0
 
 Then; 
 val = tmp * 2 ** 2
-tmp*2 = -8.0
-
+2 ** 2 = 4 because of PEMDAS
+Then, 4 *-4.0 = -16.0
 
 So, 
-val = 64.0
-
-tmp = float(-17 // 5)
-val = tmp * 2 ** 2
-print(val)
+val = -16.0 (which is a float)
 '''
 
 
