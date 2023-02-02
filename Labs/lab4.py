@@ -26,13 +26,13 @@ else:
 
 # Q2
 '''
-The difference between program 1 and 2 is quite important. 
+The difference between program 1 and 2 is quite important.
 
-In program 1, the program will check the temperature, and since the first condition is met, it stop. 
+In program 1, the program will check the temperature, and since the first condition is met, it stop.
 In other words, if/elif/else all work "together", if one condition is met than the rest do not matter.
 This will result in printing of "too hot"
 
-In program 2, the program will check the temperature, the first if condition will be met, however, so does the second condition. 
+In program 2, the program will check the temperature, the first if condition will be met, however, so does the second condition.
 In other words, each if statement needs to checked, they do not work "together"
 This will result in printing of "too hot" and "just right"
 '''
@@ -95,26 +95,31 @@ if selection == 1:
             guesses += 1
         if user_guess == secret:
             print("Your guess is right. Congratulations. It only took " +
-                  str(guesses) + "tries. ")
+                  str(guesses) + " tries. ")
             print("Thank you for playing and have nice day. ")
             break
+    if guesses > 9:
+        print("Thank you for playing!")
+        print("You have exceeded the number of guesses")
 
 if selection == 2:
     user_guess = int(input("Guess a random number: "))
     while user_guess != secret:
+        user_guess = int(input("Guess a random number: "))
         if user_guess < secret:
             print("Your guess was too low. Try again. ")
             guesses += 1
-            break
         if user_guess > secret:
             print("Your guess was too high. Try again. ")
             guesses += 1
-            break
+
     print("Your guess is right. Congratulations. It only took " +
-          str(guesses) + "tries. ")
+          str(guesses) + " tries. ")
     print("Thank you for playing and have nice day. ")
 
+'''
 else:
     print("Please select the correct gamemode; 1 or 2")
     selection = int(input(
         "Gamemodes: \n 1. Guess up to 10 times \n 2. Keep guessing until the user figures it out \nPlease select a gamemode 1 or 2: "))
+'''
