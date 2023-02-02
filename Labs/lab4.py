@@ -112,7 +112,6 @@ if selection == 2:
         if user_guess > secret:
             print("Your guess was too high. Try again. ")
             guesses += 1
-
     print("Your guess is right. Congratulations. It only took " +
           str(guesses) + " tries. ")
     print("Thank you for playing and have nice day. ")
