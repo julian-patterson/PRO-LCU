@@ -85,15 +85,15 @@ selection = int(input(
     "Gamemodes: \n 1. Guess up to 10 times \n 2. Keep guessing until the user figures it out \nPlease select a gamemode 1 or 2: "))
 
 if selection == 1:
-    user_guess = int(input("Guess a random number: "))
     while guesses <= 9:
+        user_guess = int(input("Guess a random number: "))
         if user_guess < secret:
             print("Your guess was too low. Try again. ")
             guesses += 1
         if user_guess > secret:
             print("Your guess was too high. Try again. ")
             guesses += 1
-        else:
+        if user_guess == secret:
             print("Your guess is right. Congratulations. It only took " +
                   str(guesses) + "tries. ")
             print("Thank you for playing and have nice day. ")
@@ -105,9 +105,11 @@ if selection == 2:
         if user_guess < secret:
             print("Your guess was too low. Try again. ")
             guesses += 1
+            break
         if user_guess > secret:
             print("Your guess was too high. Try again. ")
             guesses += 1
+            break
     print("Your guess is right. Congratulations. It only took " +
           str(guesses) + "tries. ")
     print("Thank you for playing and have nice day. ")
