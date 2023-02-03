@@ -104,6 +104,12 @@ if selection == 1:
 
 if selection == 2:
     user_guess = int(input("Guess a random number: "))
+    if user_guess < secret:
+        print("Your guess was too low. Try again. ")
+        guesses += 1
+    if user_guess > secret:
+        print("Your guess was too high. Try again. ")
+        guesses += 1
     while user_guess != secret:
         user_guess = int(input("Guess a random number: "))
         if user_guess < secret:
@@ -113,7 +119,7 @@ if selection == 2:
             print("Your guess was too high. Try again. ")
             guesses += 1
     print("Your guess is right. Congratulations. It only took " +
-          str(guesses) + " tries. ")
+          str(guesses + 1) + " tries. ")                        # I added one more guess because the guesses starting at 0 made the total guess less than actual
     print("Thank you for playing and have nice day. ")
 
 '''
