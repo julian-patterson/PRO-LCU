@@ -121,10 +121,3 @@ if selection == 2:
     print("Your guess is right. Congratulations. It only took " +
           str(guesses + 1) + " tries. ")                        # I added one more guess because the guesses starting at 0 made the total guess less than actual
     print("Thank you for playing and have nice day. ")
-
-'''
-else:
-    print("Please select the correct gamemode; 1 or 2")
-    selection = int(input(
-        "Gamemodes: \n 1. Guess up to 10 times \n 2. Keep guessing until the user figures it out \nPlease select a gamemode 1 or 2: "))
-'''
