@@ -3,9 +3,9 @@ Julian Patterson 2131249
 420-LCU Computer Programming Lab 4
 S. Hilal, instructor
 '''
+import random
 
 # Q1
-'''
 score = int(input("Please enter a numeric grade: "))
 
 if score >= 93:
@@ -22,7 +22,6 @@ elif score >= 60:
 
 else:
     print("Your numeric grade is " + str(score) + " and your letter grade is F")
-'''
 
 # Q2
 '''
@@ -39,7 +38,6 @@ This will result in printing of "too hot" and "just right"
 
 
 # Q3
-'''
 total = 0
 message = "Please enter an integer (or 0 to exit): "
 user_input = int(input(message))
@@ -67,7 +65,6 @@ while counter <= z:
     counter += 1
 
 print("The product of cubes for z = " + str(z) + " is " + str(product))
-'''
 # The product had to be initialized because in the while loop we could not assign the product
 # If we were to assign the product in the while then we would be constantly be reassigning it and it would not longer have the desired value
 # Furthermore, we needed to use the "+=" operation which can only be used when a variable is already assigned
@@ -77,9 +74,7 @@ print("The product of cubes for z = " + str(z) + " is " + str(product))
 # Q5
 
 
-import random
 secret = random.randrange(1, 100)
-print(secret)
 guesses = 0
 selection = int(input(
     "Gamemodes: \n 1. Guess up to 10 times \n 2. Keep guessing until the user figures it out \nPlease select a gamemode 1 or 2: "))
