@@ -78,19 +78,19 @@ while True:
             print(user_name + " , you should choose plan A")
 
         elif a_total >= c_total > b_total:
-            print(user_name + " , you should choose plan A")
+            print(user_name + ", you should choose plan A")
 
         elif b_total >= c_total > a_total:
-            print(user_name + " , you should choose plan B")
+            print(user_name + ", you should choose plan B")
 
         elif b_total > a_total > c_total:
-            print(user_name + " , you should choose plan B")
+            print(user_name + ", you should choose plan B")
 
         elif c_total > b_total > a_total:
-            print(user_name + " , you should choose plan C")
+            print(user_name + ", you should choose plan C")
 
         elif c_total > a_total > b_total:
-            print(user_name + " , you should choose plan C")
+            print(user_name + ", you should choose plan C")
 
     elif selection == "3":
         print("Thanks for using the Best Salary Plan Calculator. Exiting....")
