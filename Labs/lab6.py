@@ -22,10 +22,10 @@ print("ls1 = " + str(ls1))
 
 # Q5
 ls3 = ls1 + ls2
-print("ls3 = " + str(ls1 + ls2))
+print("ls3 = " + str(ls3))
 
 # Q6
-ls3 = ls3 + ls1
+ls3.extend(ls1)
 print("ls3 = " + str(ls3))
 
 # Q7
