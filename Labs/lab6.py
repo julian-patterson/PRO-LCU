@@ -56,3 +56,37 @@ print("ls3 = " + str(ls3))
 # Ls3 has now been modified, whereas in Q10 it was unchanged
 
 # Q12
+ls6 = ls5.copy()
+
+# Q13
+index_5 = ls5.index(5)
+
+# Q14
+ls5.pop(index_5)
+print("ls5 = " + str(ls5))
+# Only removes the first 5 integer from ls5
+
+# Q15
+ls6.remove(5)
+print("ls6 = " + str(ls6))
+# Again only removes the first 5 integer from ls6
+
+
+# Part 2
+# Q1
+ID = "2131249"
+
+# Q2
+ID_digits = list(ID)
+print(ID)
+print(ID_digits)
+
+# Q3
+print("The number 1 occurs this many times: " + str(ID_digits.count("1")))
+
+# Q4
+ID_digits.insert(0, "9")
+
+# Q5
+new_ID = ''.join(ID_digits)
+print("New ID = " + str(new_ID))
