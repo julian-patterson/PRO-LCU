@@ -43,7 +43,9 @@ while True:
                 tmp_type_check.append(False)
                 break
 
-            if tmp_record_list[0].isalpha() != True:
+            # TODO ask - assign another variable and replacing the space and then check
+            tmp_name = tmp_record_list[0].replace(" ", "")
+            if tmp_name.isalpha() != True:
                 print("The student name must be a string. Record rejected.")
                 tmp_type_check.append(False)
                 break
@@ -53,11 +55,11 @@ while True:
                 tmp_type_check.append(False)
                 break
 
-            # TODO for loop
-            if int(tmp_record_list[1]) == any(IDs):
-                print("Duplicate ID number. Record rejected")
-                tmp_type_check.append(False)
-                break
+            for id in IDs:
+                if int(id) == int(tmp_record_list[1]):
+                    print("Duplicate ID number. Record rejected")
+                    tmp_type_check.append(False)
+                    break
 
             if tmp_record_list[2] != "HH" and tmp_record_list[2] != "HP" and tmp_record_list[2] != "B2":
                 print("Invalid program enter. Please enter HH, HP or B2")
@@ -122,14 +124,15 @@ while True:
             if all(tmp_test_scores_booleans) != True or all(tmp_lab_scores_booleans) != True:
                 break
 
+            if not all(tmp_type_check):
+                break
+
             # TODO overall grade is messed up
-            if all(tmp_test_scores_booleans) and all(tmp_lab_scores_booleans) and not any(tmp_type_check):
+            if all(tmp_test_scores_booleans) and all(tmp_lab_scores_booleans) and all(tmp_type_check):
                 print("Record Accepted.")
-                print(tmp_lab_scores_total)
-                print(tmp_test_scores_total)
-                print(tmp_record_list[-1])
-                tmp_overall_grade = ((int(tmp_record_list[-1])*(100/20)*0.2) + (
-                    tmp_lab_scores_total*(100/30)*.30) + ((tmp_test_scores_total)*0.5))
+
+                tmp_overall_grade = (((int(tmp_record_list[-1])/20*0.2) + (
+                    tmp_lab_scores_total/30*.30) + (tmp_test_scores_total/50*0.5))*100)
 
                 if int(tmp_overall_grade) >= 87:
                     tmp_letter_grade = "A"
