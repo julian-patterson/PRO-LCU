@@ -215,7 +215,14 @@ while True:
               " Highest Grade for T2: " + str(max(T2)*100/25) + " Lowest Grade for T2: " + str(min(T2)*100/25))
 
     elif selection == "4":
-        break
+        id_input = input("Enter the student's ID: ")
+        for record in data:
+            if record[1] == int(id_input):
+                print("Name: " + str(record[0]) + "    ID: " + str(record[1]))
+                print("Test Grades: " + str(record[3]).strip(" []") + " Lab Grades: " + str(
+                    record[4]).strip(" []") + " Project Grade: " + str(record[5]))
+                print("Total Grade: " +
+                      str(record[6]) + "     Letter Grade: " + str(record[7]))
 
     elif selection == "5":
         break
