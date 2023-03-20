@@ -13,6 +13,7 @@ Labs = []   # Lab grades (3 grades/student)
 Proj = []   # Project grades
 Grds = []   # Total grades
 LGrds = []  # letter grades
+data = []   # Overall Data
 
 '''
 Guide:
@@ -127,7 +128,6 @@ while True:
             if not all(tmp_type_check):
                 break
 
-            # TODO overall grade is messed up
             if all(tmp_test_scores_booleans) and all(tmp_lab_scores_booleans) and all(tmp_type_check):
                 print("Record Accepted.")
 
@@ -146,6 +146,9 @@ while True:
                 else:
                     tmp_letter_grade = "F"
 
+                tmp_data = [tmp_record_list[0], int(tmp_record_list[1]), tmp_record_list[2], str(tmp_test_list), str(tmp_lab_list), int(
+                    tmp_record_list[-1]), int(tmp_overall_grade), tmp_letter_grade]
+                data.append(tmp_data)
                 Names.append(tmp_record_list[0])
                 IDs.append(int(tmp_record_list[1]))
                 Prog.append(tmp_record_list[2])
@@ -154,18 +157,14 @@ while True:
                 Proj.append(int(tmp_record_list[-1]))
                 Grds.append(int(tmp_overall_grade))
                 LGrds.append(tmp_letter_grade)
-                print(Names)
-                print(IDs)
-                print(Prog)
-                print(Tests)
-                print(Labs)
-                print(Proj)
-                print(Grds)
-                print(LGrds)
                 break
 
     elif selection == "2":
-        break
+        data.sort()
+        x = "{:12s} {:6d} {:3s} {:8s} {:12s} {:3d} {:3d} {:1s}"
+        for i in data:
+            print(x.format(i[0], i[1], i[2], i[3],
+                  i[4], i[5], i[6], i[7]))
 
     elif selection == "3":
         break
