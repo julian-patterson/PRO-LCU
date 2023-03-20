@@ -167,7 +167,52 @@ while True:
                   i[4], i[5], i[6], i[7]))
 
     elif selection == "3":
-        break
+        tmp_total_Grds = 0
+        print("Number of students entered: " + str(len(Names)))
+
+        for i in Grds:
+            tmp_total_Grds += i
+        print("Class average based on total grade: " +
+              str((tmp_total_Grds)/len(Names)))
+
+        # TODO Mode
+        A = LGrds.count("A")
+        B = LGrds.count("B")
+        C = LGrds.count("C")
+        F = LGrds.count("F")
+
+        print("Class Mode(s) based on letter grade: " + str())
+
+        T1 = []
+        T2 = []
+        T1_total = 0
+        T2_total = 0
+        L1_total = 0
+        L2_total = 0
+        L3_total = 0
+        Proj_total = 0
+        for i in Tests:
+            T1_total += i[0]
+            T1.append(i[0])
+            T2_total += i[1]
+            T2.append(i[1])
+
+        for i in Labs:
+            L1_total += i[0]
+            L2_total += i[1]
+            L3_total += i[2]
+
+        for i in Proj:
+            Proj_total += i
+
+        print("Evaluation Averages: T1: " + str(float((T1_total/len(Names))*100/25)) + " T2: " + str(float((T2_total/len(Names))*100/25)) + " L1: " + str(float((L1_total/len(Names))*100/10)
+                                                                                                                                                          ) + " L2: " + str(float((L2_total/len(Names))*100/10)) + " L3: " + str(float((L3_total/len(Names))*100/10)) + " Proj: " + str(float((Proj_total/len(Names))*100/20)))
+
+        print("Letter Grade distribution: A: " + str(A) +
+              " B: " + str(B) + " C: " + str(C) + " F: " + str(F))
+
+        print("Highest Grade for T1: " + str(max(T1)*100/25) + " Lowest Grade for T1: " + str(min(T1)*100/25) +
+              " Highest Grade for T2: " + str(max(T2)*100/25) + " Lowest Grade for T2: " + str(min(T2)*100/25))
 
     elif selection == "4":
         break
