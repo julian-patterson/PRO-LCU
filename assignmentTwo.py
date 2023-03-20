@@ -228,7 +228,51 @@ while True:
         break
 
     elif selection == "6":
-        break
+        id_input = input("Enter the student's ID: ")
+        grade_input = input("Which grade to update: ")
+        for record in data:
+            if record[1] == int(id_input):
+                for i in record[3]:
+                    test_list_stripped = str(i).strip(" []")
+                    test_list = test_list_stripped.split(",")
+                    T1_grade = test_list[0]
+                    T2_grade = test_list[1]
+                for i in record[4]:
+                    lab_list_stripped = str(i).strip(" []")
+                    lab_list = lab_list_stripped.split(",")
+                    L1_grade = i[0]
+                    L2_grade = i[1]
+                    L3_grade = i[2]
+                proj_grade = record[5]
+                if grade_input == "T1":
+                    print("The current T1 grade is " + str(T1_grade))
+                    update = input("Enter the new T1 grade: ")
+                    str(record[3]).replace(T1_grade, update)
+
+                elif grade_input == "T2":
+                    print("The current T2 grade is " + str(T2_grade))
+                    update = input("Enter the new T2 grade: ")
+                    str(record[3]).replace(T2_grade, update)
+
+                elif grade_input == "L1":
+                    print("The current L1 grade is " + str(L1_grade))
+                    update = input("Enter the new L1 grade: ")
+                    str(record[3]).replace(L1_grade, update)
+
+                elif grade_input == "L2":
+                    print("The current L2 grade is " + str(L2_grade))
+                    update = input("Enter the new L2 grade: ")
+                    str(record[3]).replace(L2_grade, update)
+
+                elif grade_input == "L3":
+                    print("The current L3 grade is " + str(L3_grade))
+                    update = input("Enter the new L3 grade: ")
+                    str(record[3]).replace(L3_grade, update)
+
+                else:
+                    print("The current PR grade is " + str(proj_grade))
+                    update = input("Enter the new PR grade: ")
+                    str(record[3]).replace(proj_grade, update)
 
     elif selection == "7":
         break
