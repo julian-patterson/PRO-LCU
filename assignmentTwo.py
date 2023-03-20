@@ -44,12 +44,15 @@ while True:
                 tmp_type_check.append(False)
                 break
 
-            # TODO ask - assign another variable and replacing the space and then check
             tmp_name = tmp_record_list[0].replace(" ", "")
             if tmp_name.isalpha() != True:
                 print("The student name must be a string. Record rejected.")
                 tmp_type_check.append(False)
                 break
+
+            if tmp_record_list[1].isdigit() == False:
+                print("ID must only contain digits. Record Rejected")
+                tmp_type_check.append(False)
 
             if len(tmp_record_list[1]) != 6:
                 print("ID must have 6 digits. Record rejected. ")
