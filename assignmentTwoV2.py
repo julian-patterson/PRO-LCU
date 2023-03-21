@@ -102,7 +102,11 @@ while True:
                 if record[1].isdigit():
                     if len(record[1]) == 6:
                         for id in IDs:
-                            if int(id) != int(record[1]):
+                            if int(record[1]) == int(id):
+                                print("ID is duplicated. Record Rejected. ")
+                                break
+
+                            else:
                                 if record[2] == "HH" or "HP" or "B2":
                                     if score_check(record[3:5], "test"):
                                         if score_check(record[5:8], "lab"):
@@ -135,14 +139,10 @@ while True:
                                                 LGrds.append(
                                                     str(overall_grade))
                                                 break
-
                                 else:
                                     print(
                                         "Invalid program ented. Please enter HH, HP, or B2")
                                     break
-                            else:
-                                print("ID is duplicated. Record Rejected. ")
-                                break
                     else:
                         print("ID must be 6 digits. Record Rejected. ")
                         break

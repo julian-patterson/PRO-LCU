@@ -13,7 +13,7 @@ Labs = []   # Lab grades (3 grades/student)
 Proj = []   # Project grades
 Grds = []   # Total grades
 LGrds = []  # letter grades
-data = []   # Overall Data
+Data = []   # Overall Data
 
 '''
 Guide:
@@ -30,6 +30,13 @@ MENU = '''\nWelcome to the Simple Class Calculator. Here's the list of available
     6- Update an evaluation grade for one student.
     7- Exit
 Select an option by entering its number or 7 to exit: '''
+
+# Function for calculating average
+
+
+def average(list):
+    return sum(list)/len(list)
+
 
 while True:
     selection = input(MENU)
@@ -149,9 +156,9 @@ while True:
                 else:
                     tmp_letter_grade = "F"
 
-                tmp_data = [tmp_record_list[0], int(tmp_record_list[1]), tmp_record_list[2], str(tmp_test_list), str(tmp_lab_list), int(
+                tmp_data = [tmp_record_list[0], int(tmp_record_list[1]), tmp_record_list[2], tmp_test_list, tmp_lab_list, int(
                     tmp_record_list[-1]), int(tmp_overall_grade), tmp_letter_grade]
-                data.append(tmp_data)
+                Data.append(tmp_data)
                 Names.append(tmp_record_list[0])
                 IDs.append(int(tmp_record_list[1]))
                 Prog.append(tmp_record_list[2])
@@ -163,9 +170,9 @@ while True:
                 break
 
     elif selection == "2":
-        data.sort()
+        Data.sort()
         x = "{:12s} {:6d} {:3s} {:8s} {:12s} {:3d} {:3d} {:1s}"
-        for i in data:
+        for i in Data:
             print(x.format(i[0], i[1], i[2], i[3],
                   i[4], i[5], i[6], i[7]))
 
@@ -178,13 +185,30 @@ while True:
         print("Class average based on total grade: " +
               str((tmp_total_Grds)/len(Names)))
 
-        # TODO Mode
-        A = LGrds.count("A")
-        B = LGrds.count("B")
-        C = LGrds.count("C")
-        F = LGrds.count("F")
+        mode = []
+        A_count = LGrds.count("A")
+        mode.append([A_count, "A"])
 
-        print("Class Mode(s) based on letter grade: " + str())
+        B_count = LGrds.count("B")
+        mode.append([B_count, "B"])
+
+        C_count = LGrds.count("C")
+        mode.append([C_count, "C"])
+
+        F_count = LGrds.count("F")
+        mode.append([F_count, "F"])
+
+        mode.sort(reverse=True)
+        for i in mode:
+            previous_count = 0
+            previous_letter = i[1]
+            if int(i[0]) > previous_count:
+                print("The class mode is " + str(i[1]))
+                break
+            elif int(i[0]) == previous_count:
+                print("The class mode is " +
+                      str(i[1]) + " and " + str(previous_letter))
+            previous_count = int(i[0])
 
         T1 = []
         T2 = []
@@ -211,15 +235,15 @@ while True:
         print("Evaluation Averages: T1: " + str(float((T1_total/len(Names))*100/25)) + " T2: " + str(float((T2_total/len(Names))*100/25)) + " L1: " + str(float((L1_total/len(Names))*100/10)
                                                                                                                                                           ) + " L2: " + str(float((L2_total/len(Names))*100/10)) + " L3: " + str(float((L3_total/len(Names))*100/10)) + " Proj: " + str(float((Proj_total/len(Names))*100/20)))
 
-        print("Letter Grade distribution: A: " + str(A) +
-              " B: " + str(B) + " C: " + str(C) + " F: " + str(F))
+        print("Letter Grade distribution: A: " + str(LGrds.count("A")) +
+              " B: " + str(LGrds.count("B")) + " C: " + str(LGrds.count("C")) + " F: " + str(LGrds.count("F")))
 
         print("Highest Grade for T1: " + str(max(T1)*100/25) + " Lowest Grade for T1: " + str(min(T1)*100/25) +
               " Highest Grade for T2: " + str(max(T2)*100/25) + " Lowest Grade for T2: " + str(min(T2)*100/25))
 
     elif selection == "4":
         id_input = input("Enter the student's ID: ")
-        for record in data:
+        for record in Data:
             if record[1] == int(id_input):
                 print("Name: " + str(record[0]) + "    ID: " + str(record[1]))
                 print("Test Grades: " + str(record[3]).strip(" []") + " Lab Grades: " + str(
@@ -228,55 +252,52 @@ while True:
                       str(record[6]) + "     Letter Grade: " + str(record[7]))
 
     elif selection == "5":
-        break
+        overall_class_average = average(Grds)
+        for i in Data:
+            if i[6] <= overall_class_average:
+                print(i[0])
+            else:
+                continue
 
-    # TODO
     elif selection == "6":
         id_input = input("Enter the student's ID: ")
         grade_input = input("Which grade to update: ")
-        for record in data:
+        for record in Data:
             if record[1] == int(id_input):
-                for i in record[3]:
-                    test_list_stripped = str(i).strip(" []")
-                    test_list = test_list_stripped.split(",")
-                    T1_grade = test_list[0]
-                    T2_grade = test_list[1]
-                for i in record[4]:
-                    lab_list_stripped = str(i).strip(" []")
-                    lab_list = lab_list_stripped.split(",")
-                    L1_grade = i[0]
-                    L2_grade = i[1]
-                    L3_grade = i[2]
-                proj_grade = record[5]
                 if grade_input == "T1":
-                    print("The current T1 grade is " + str(T1_grade))
+                    temp_record = record[3]
+                    print("The current T1 grade is " + str(temp_record[0]))
                     update = input("Enter the new T1 grade: ")
-                    str(record[3]).replace(T1_grade, update)
-
+                    temp_record[0] = int(update)
+                    record[3] = temp_record
                 elif grade_input == "T2":
-                    print("The current T2 grade is " + str(T2_grade))
+                    temp_record = record[3]
+                    print("The current T2 grade is " + str(temp_record[1]))
                     update = input("Enter the new T2 grade: ")
-                    str(record[3]).replace(T2_grade, update)
-
+                    temp_record[1] = int(update)
+                    record[3] = temp_record
                 elif grade_input == "L1":
-                    print("The current L1 grade is " + str(L1_grade))
+                    temp_record = record[4]
+                    print("The current L1 grade is " + str(temp_record[0]))
                     update = input("Enter the new L1 grade: ")
-                    str(record[3]).replace(L1_grade, update)
-
+                    temp_record[0] = int(update)
+                    record[4] = temp_record
                 elif grade_input == "L2":
-                    print("The current L2 grade is " + str(L2_grade))
+                    temp_record = record[4]
+                    print("The current L2 grade is " + str(temp_record[1]))
                     update = input("Enter the new L2 grade: ")
-                    str(record[3]).replace(L2_grade, update)
-
+                    temp_record[1] = int(update)
+                    record[4] = temp_record
                 elif grade_input == "L3":
-                    print("The current L3 grade is " + str(L3_grade))
-                    update = input("Enter the new L3 grade: ")
-                    str(record[3]).replace(L3_grade, update)
-
+                    temp_record = record[4]
+                    print("The current L3 grade is " + str(temp_record[2]))
+                    update = input("Enter the new L1 grade: ")
+                    temp_record[2] = int(update)
+                    record[4] = temp_record
                 else:
-                    print("The current PR grade is " + str(proj_grade))
+                    print("The current PR grade is " + str(record[5]))
                     update = input("Enter the new PR grade: ")
-                    str(record[3]).replace(proj_grade, update)
+                    record[5] = int(update)
 
     elif selection == "7":
         break
