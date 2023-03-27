@@ -121,3 +121,43 @@ def my_product(my_list):
 print(my_product([1, 5, 9]))  # returns 45
 print(my_product([100, 200, 0]))  # returns 0
 print(my_product([]))  # returns 0
+
+
+# Q7
+def my_product_r(n):
+    if len(n) != 0:
+        return (n[0] * my_product_r(n[1:]))
+    else:
+        return 0
+
+
+# Test cases for Function my_product_r
+print(my_product_r([1, 5, 9]))  # returns 45
+print(my_product_r([100, 200, 0]))  # returns 0
+print(my_product_r([]))  # returns 0
+
+# Q8
+
+
+def sum_cubes_r(n):
+    if n != 0:
+        while n != 0:
+            return n**3 + sum_cubes_r(n-1)
+    else:
+        return 0
+
+
+# Test cases for Function sum_cubes_r
+print(sum_cubes_r(4))  # returns 100
+print(sum_cubes_r(5))  # returns 225
+
+# Q9
+
+
+def recursive_list_builder(n):
+    while n > -1:
+        return list(n) + list(n-1)
+
+
+print(recursive_list_builder(8))
+print(recursive_list_builder(0))
