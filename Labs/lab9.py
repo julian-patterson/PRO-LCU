@@ -9,6 +9,7 @@ Lab 9
 
 
 def my_len(iterable):
+    '''Returns the length of an interable'''
     length = 0
     for i in iterable:
         length += 1
@@ -24,6 +25,7 @@ print(my_len((1, 5, 9, 2)))
 
 
 def my_sum(my_list):
+    '''Returns the sum of all the items in a list'''
     if len(my_list) == 0:
         return 0
 
@@ -43,6 +45,7 @@ print(my_sum([]))  # returns 0
 
 
 def my_count(my_list, count):
+    '''Mimics the behavior of the count function'''
     amount = 0
     for i in my_list:
         if i == count:
@@ -63,6 +66,7 @@ print(my_count(x, 4))
 
 
 def my_find(my_list, value):
+    '''Returns the index of a searched value'''
     index = -1
     for i in my_list:
         if i == value:
@@ -84,6 +88,7 @@ print(my_find([1, 5, 9, 1], 1))  # returns 0
 
 
 def is_prime(n):
+    '''Checks if a number is prime'''
     if n <= 1:
         return False
     if n == 3:
@@ -107,6 +112,7 @@ print(is_prime(19))  # prints True
 
 
 def my_product(my_list):
+    '''Returns the product of all the numbers in a list'''
     if len(my_list) == 0:
         return 0
 
@@ -125,10 +131,12 @@ print(my_product([]))  # returns 0
 
 # Q7
 def my_product_r(n):
-    if len(n) != 0:
-        return (n[0] * my_product_r(n[1:]))
-    else:
+    '''Returns the product of a list using a recursive function'''
+    if len(n) == 0:
         return 0
+    elif len(n) == 1:
+        return n[0]
+    return int(my_product_r(n[1:]))*n[0]
 
 
 # Test cases for Function my_product_r
@@ -140,11 +148,11 @@ print(my_product_r([]))  # returns 0
 
 
 def sum_cubes_r(n):
-    if n != 0:
-        while n != 0:
-            return n**3 + sum_cubes_r(n-1)
-    else:
+    '''Returns the sum of cubes for a given integer. Ex. 3^3 + 2^3 + 1^3'''
+    if n == 0:
         return 0
+    else:
+        return n**3 + sum_cubes_r(n-1)
 
 
 # Test cases for Function sum_cubes_r
@@ -155,8 +163,13 @@ print(sum_cubes_r(5))  # returns 225
 
 
 def recursive_list_builder(n):
-    while n > -1:
-        return list(n) + list(n-1)
+    '''Creates a list counting down from n- to the 0'''
+    if n == 0:
+        return [0]
+    else:
+        list = recursive_list_builder(n-1)
+        list.insert(0, n)
+        return list
 
 
 print(recursive_list_builder(8))
