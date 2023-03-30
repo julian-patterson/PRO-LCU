@@ -25,7 +25,7 @@ print(my_len((1, 5, 9, 2)))
 
 
 def my_sum(my_list):
-    '''Returns the sum of all the items in a list'''
+    '''Returns the sum of all the integers in a list'''
     if len(my_list) == 0:
         return 0
 
@@ -148,7 +148,7 @@ print(my_product_r([]))  # returns 0
 
 
 def sum_cubes_r(n):
-    '''Returns the sum of cubes for a given integer. Ex. 3^3 + 2^3 + 1^3'''
+    '''Returns the sum of cubes (to 1) for a given integer using a recursive function. Ex. 3^3 + 2^3 + 1^3'''
     if n == 0:
         return 0
     else:
@@ -163,7 +163,7 @@ print(sum_cubes_r(5))  # returns 225
 
 
 def recursive_list_builder(n):
-    '''Creates a list counting down from n- to the 0'''
+    '''Creates a list counting down from n to 0 using a recursive method'''
     if n == 0:
         return [0]
     else:
