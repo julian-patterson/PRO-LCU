@@ -31,10 +31,7 @@ for key in colors:
 # Q4
 
 # Q5
-# TODO
-sum = 0
-for val in colors.values():
-    sum += val 
+print(sum(list(colors.values())))
 # One line of code is "sum += val"
 
 # Q6
@@ -45,6 +42,7 @@ print(colors)
 # Q7
 for key in sorted(colors):
     print(key)
+# sorted them alphabetically
 
 # Q8
 # print(colors["pink"])
