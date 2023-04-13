@@ -18,5 +18,4 @@ for entry in data.readlines():
 
 x = "{:50s} {:20s}"
 for entry in sorted(Books):
-    # print(entry, Books[entry])
     print(x.format(str(entry), str(Books[entry])))
