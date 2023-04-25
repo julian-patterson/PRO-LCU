@@ -4,18 +4,18 @@ Julian Patterson 2131249
 S. Hilal, instructor
 Lab 13
 '''
-import time
+import datetime
 
 
 class BankAccount:
-    def __init__(self, CODE, NAME, BANK, TYPE, PASSWORD, BALANCE=0):
+    def __init__(self, CODE, NAME, BANK, TYPE, BALANCE=0):
         self.code = CODE
         self.name = NAME
         self.bank = BANK
         self.type = TYPE
         self.balance = BALANCE
-        self.__password = PASSWORD
-        self.__last_access = None
+        self.__password = None
+        self.__last_access = datetime.datetime.now()
 
     def __repr__(self):
         fmt = "{:6d} {:20s} {:10s} {:10s} {:6d} {:30d}"
@@ -29,22 +29,22 @@ class BankAccount:
             self.balance -= amount
         else:
             print("You have insufficient funds in your account")
-        self.__last_access = time.time()
+        self.__last_access = datetime.datetime.now()
 
     def deposit(self, amount):
         self.balance += amount
         print("Your updated balance is: " + self.balance)
-        self.__last_access = time.time()
+        self.__last_access = datetime.datetime.now()
 
     def transfer(self, other, amount):
         self.balance -= amount
         other.balance += amount
         print("Your money has been to transfered")
-        self.__last_access = time.time()
+        self.__last_access = datetime.datetime.now()
 
     def get_balance(self):
         print("Your balance is " + self.balance)
-        self.__last_access = time.time()
+        self.__last_access = datetime.datetime.now()
 
     def create_pwd(self):
         pwd_success = False
@@ -84,7 +84,7 @@ class BankAccount:
             print("Password Accepted!")
             self.__password = pwd
             return True
-        self.__last_access = time.time()
+        self.__last_access = datetime.datetime.now()
 
     def verify_pwd(self):
         verify = input("Please enter your password: ")
@@ -92,7 +92,7 @@ class BankAccount:
             return True
         if verify != self.__password:
             return False
-        self.__last_access = time.time()
+        self.__last_access = datetime.datetime.now()
 
 
 # Q1
