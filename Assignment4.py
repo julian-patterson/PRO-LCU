@@ -18,11 +18,10 @@ MENU = """Welcome to My Top Books Club:
 9- What are the top 7 types of books based on total sold?
 10- Display a pie chart plot to show the distribution of books among the top 7 types of books.
 11- Exit
-Please enter a selection: 
-"""
+Please enter a selection: """
 
 Books = {}
-data = open("books.txt" , "r")
+data = open("books.txt", "r")
 
 for entry in data.readlines():
     entry.split("\n")
@@ -34,48 +33,101 @@ for entry in data.readlines():
 
 while True:
     selection = input(MENU)
+
     def Language_Dict():
-        Languages = {}
+        Languages = []
+        Dict = {}
         for value in Books.values():
-            Languages[value["lang"]] += 1
-        return Languages
+            Languages.append(value["lang"])
+        for language in sorted(Languages):
+            if language in Dict:
+                Dict[language] += 1
+            else:
+                Dict[language] = 1
+        return Dict
 
+    def Type_Dict():
+        Types = []
+        Dict = {}
+        for value in Books.values():
+            Types.append(value["type"])
+        for type in sorted(Types):
+            if type in Dict:
+                Dict[type] += 1
+            else:
+                Dict[type] = 1
+        return Dict
 
+    def Auth_Dict():
+        Auth = []
+        Dict = {}
+        for value in Books.values():
+            Auth.append(value["auth"])
+        for auth in sorted(Auth):
+            if auth in Dict:
+                Dict[auth] += 1
+            else:
+                Dict[auth] = 1
+        return Dict
 
+    # TODO Numbered List?
     if selection == "1":
-        Languages = dict()
-
+        language_list = []
+        for key in Language_Dict():
+            language_list.append(key)
+        print(language_list)
 
     if selection == "2":
-        break
+        print("This is language has the most sold books: " +
+              max(Language_Dict(), key=Language_Dict().get))
 
+    # TODO Format Printing
     if selection == "3":
-        break 
+        selected_language = input(
+            "Please enter a language to see all the books: ")
+        for key, value in Books.items():
+            if selected_language in str(Books):
+                if selected_language in str(value):
+                    print(str(key) + str(value))
+            else:
+                print("There is no such book in that language ")
+                break
 
     if selection == "4":
-        break 
+        print("There are " + str(len(Type_Dict())) + " different types of books")
+        type_list = []
+        for key in Type_Dict():
+            type_list.append(key)
+        print("These are all the different types " + str(type_list))
+        print("This type has the most sold books: " +
+              max(Type_Dict(), key=Type_Dict().get))
 
     if selection == "5":
-        break 
+        auth_dict = {}
+        for key, value in Auth_Dict().items():
+            if value > 1:
+                auth_dict[key] = value
+        print(auth_dict)
 
+    # TODO only got 7 authors with more than 1 {'C. S. Lewis': 2, 'Charles Dickens': 2, 'Dan Brown': 3, 'George Orwell': 2, 'J. K. Rowling': 7, 'J. R. R. Tolkien': 2, 'Suzanne Collins': 2}
     if selection == "6":
-        break 
+        break
 
     if selection == "7":
-        break 
+        selected_author = input(
+            "Please enter an author to see the number of books sold: ")
 
     if selection == "8":
-        break 
+        break
 
     if selection == "9":
-        break 
+        break
 
     if selection == "10":
-        break 
+        break
 
     if selection == "11":
-        break 
+        break
 
     else:
         print("Please enter a valid selection.")
-
