@@ -45,6 +45,15 @@ while True:
             else:
                 Dict[language] = 1
         return Dict
+    
+    def Sold_Dict():
+        Dict = {}
+        for value in Books.values():
+            if value["type"] in Dict:
+                Dict[value["type"]] += value["sold"]
+            else:
+                Dict[value["type"]] = value["sold"]
+        return Dict
 
     def Type_Dict():
         Types = []
@@ -58,6 +67,7 @@ while True:
                 Dict[type] = 1
         return Dict
 
+    # TODO Formatted printing 
     def Auth_Dict():
         Auth = []
         Dict = {}
@@ -69,6 +79,7 @@ while True:
             else:
                 Dict[auth] = 1
         return Dict
+    
 
     # TODO Numbered List?
     if selection == "1":
@@ -76,10 +87,11 @@ while True:
         for key in Language_Dict():
             language_list.append(key)
         print(language_list)
+        print("\n")
 
     if selection == "2":
         print("This is language has the most sold books: " +
-              max(Language_Dict(), key=Language_Dict().get))
+              max(Language_Dict(), key=Language_Dict().get) + "\n")
 
     # TODO Format Printing
     if selection == "3":
@@ -90,7 +102,7 @@ while True:
                 if selected_language in str(value):
                     print(str(key) + str(value))
             else:
-                print("There is no such book in that language ")
+                print("There is no such book in that language \n")
                 break
 
     if selection == "4":
@@ -100,7 +112,7 @@ while True:
             type_list.append(key)
         print("These are all the different types " + str(type_list))
         print("This type has the most sold books: " +
-              max(Type_Dict(), key=Type_Dict().get))
+              max(Type_Dict(), key=Type_Dict().get) + "\n")
 
     if selection == "5":
         auth_dict = {}
@@ -114,14 +126,38 @@ while True:
         break
 
     if selection == "7":
+        total = 0
         selected_author = input(
             "Please enter an author to see the number of books sold: ")
+        if selected_author in str(Books):
+            for key,value in Books.items():
+                if selected_author in str(value):
+                    total += value["sold"]
+            print(str(selected_author) + " has sold " + str(total) + " number of copies. \n")
+        else:
+            print(str(selected_author) + " does not exist in this database. Please be sure to spell the name correctly. \n")
+
 
     if selection == "8":
-        break
+        type_list = []
+        for key in Type_Dict():
+            type_list.append(key)
+        print("These are all the different types of books: " + str(type_list) + "\n")
+        type_selection = input("Enter the type of books you would like to see: ")
+        if type_selection in str(type_list):
+            for key,value in Books.items():
+                if type_selection in str(value):
+                    print(str(key), str(value))
+        else:
+            print("This is not a valid type. \n")
 
+    # TODO I need to redo this
     if selection == "9":
-        break
+        Temp = []
+        for key,value in sorted(Sold_Dict()):
+            for i in range(1,8):
+                print(i, ". " + str(key) + " with " + str(value) + " number of copies sold.")
+
 
     if selection == "10":
         break
