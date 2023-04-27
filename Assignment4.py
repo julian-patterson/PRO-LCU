@@ -5,6 +5,8 @@ Friday February 17, 2023
 S. Hilal, instructor
 Assignment 4
 '''
+import matplotlib.pyplot as py
+import numpy as np
 
 MENU = """Welcome to My Top Books Club:
 1- How many different languages are there? Print a number list of all languages.
@@ -45,7 +47,7 @@ while True:
             else:
                 Dict[language] = 1
         return Dict
-    
+
     def Sold_Dict():
         Dict = {}
         for value in Books.values():
@@ -67,7 +69,6 @@ while True:
                 Dict[type] = 1
         return Dict
 
-    # TODO Formatted printing 
     def Auth_Dict():
         Auth = []
         Dict = {}
@@ -79,28 +80,31 @@ while True:
             else:
                 Dict[auth] = 1
         return Dict
-    
 
-    # TODO Numbered List?
     if selection == "1":
         language_list = []
+        i = 1
         for key in Language_Dict():
             language_list.append(key)
-        print(language_list)
+            print(str(i) + ". " + str(key))
+            i += 1
         print("\n")
 
     if selection == "2":
         print("This is language has the most sold books: " +
               max(Language_Dict(), key=Language_Dict().get) + "\n")
 
-    # TODO Format Printing
     if selection == "3":
         selected_language = input(
             "Please enter a language to see all the books: ")
+        print("{:50s}".format("Book:") + "{:25s}".format("Author:") + "{:20s}".format(
+            "Language: ") + "{:20s}".format("Type:") + "{:20s}".format("Sold:"))
         for key, value in Books.items():
             if selected_language in str(Books):
                 if selected_language in str(value):
-                    print(str(key) + str(value))
+
+                    print("{:50s}".format(str(key)) +
+                          "{:25s}".format(str(value["auth"])) + "{:20s}".format(str(value["lang"])) + "{:20s}".format(str(value["type"])) + "{:20d}".format(value["sold"]))
             else:
                 print("There is no such book in that language \n")
                 break
@@ -110,7 +114,8 @@ while True:
         type_list = []
         for key in Type_Dict():
             type_list.append(key)
-        print("These are all the different types " + str(type_list))
+        print("These are all the different types: \n" +
+              str(type_list).strip("[]"))
         print("This type has the most sold books: " +
               max(Type_Dict(), key=Type_Dict().get) + "\n")
 
@@ -118,55 +123,74 @@ while True:
         auth_dict = {}
         for key, value in Auth_Dict().items():
             if value > 1:
-                auth_dict[key] = value
-        print(auth_dict)
+                print("{:20s}".format(str(key) + ": ") +
+                      "{:4d}".format(value))
 
-    # TODO only got 7 authors with more than 1 {'C. S. Lewis': 2, 'Charles Dickens': 2, 'Dan Brown': 3, 'George Orwell': 2, 'J. K. Rowling': 7, 'J. R. R. Tolkien': 2, 'Suzanne Collins': 2}
     if selection == "6":
         top_authors = {}
-        for key,value in sorted(Books.items()):
+        for key, value in sorted(Books.items()):
             top_authors[key] = value["sold"]
         for i in range(1, 11):
-            for key,value in sorted(top_authors, key=top_authors.get):
-                print(i + ". " + key + " with " + value + " copies sold.") 
-
+            for key, value in sorted(top_authors.items(), key=top_authors.get):
+                print(i + ". " + key + " with " + value + " copies sold.")
 
     if selection == "7":
         total = 0
         selected_author = input(
             "Please enter an author to see the number of books sold: ")
         if selected_author in str(Books):
-            for key,value in Books.items():
+            for key, value in Books.items():
                 if selected_author in str(value):
                     total += value["sold"]
-            print(str(selected_author) + " has sold " + str(total) + " number of copies. \n")
+            print(str(selected_author) + " has sold " +
+                  str(total) + " number of copies. \n")
         else:
-            print(str(selected_author) + " does not exist in this database. Please be sure to spell the name correctly. \n")
-
+            print(str(selected_author) +
+                  " does not exist in this database. Please be sure to spell the name correctly. \n")
 
     if selection == "8":
         type_list = []
         for key in Type_Dict():
             type_list.append(key)
-        print("These are all the different types of books: " + str(type_list) + "\n")
-        type_selection = input("Enter the type of books you would like to see: ")
+        print("These are all the different types of books: \n" +
+              str(type_list).strip("[]") + "\n")
+        type_selection = input(
+            "Enter the type of books you would like to see: ")
+        print("{:50s}".format("Book:") + "{:25s}".format("Author:") + "{:20s}".format(
+            "Language: ") + "{:20s}".format("Type:") + "{:20s}".format("Sold:"))
         if type_selection in str(type_list):
-            for key,value in Books.items():
+            for key, value in Books.items():
                 if type_selection in str(value):
-                    print(str(key), str(value))
+                    print("{:50s}".format(str(key)) +
+                          "{:25s}".format(str(value["auth"])) + "{:20s}".format(str(value["lang"])) + "{:20s}".format(str(value["type"])) + "{:20d}".format(value["sold"]))
         else:
-            print("This is not a valid type. \n")
+            print("This is not a valid type.")
+        print("\n")
 
-    # TODO I need to redo this
     if selection == "9":
-        Temp = []
-        for key,value in sorted(Sold_Dict()):
-            for i in range(1,8):
-                print(i, ". " + str(key) + " with " + str(value) + " number of copies sold.")
-
+        i = 1
+        for key, value in sorted(Sold_Dict().items()):
+            if i <= 7:
+                print(i, ". " + str(key) + " with " +
+                      str(value) + " number of copies sold.")
+                i += 1
+            else:
+                break
+        print("\n")
 
     if selection == "10":
-        break
+        i = 1
+        Sold = []
+        Types = []
+        for key, value in sorted(Sold_Dict().items()):
+            if i <= 7:
+                Sold.append(value)
+                Types.append(key)
+                i += 1
+            else:
+                break
+        py.pie(Sold, labels=Types)
+        py.show()
 
     if selection == "11":
         break
