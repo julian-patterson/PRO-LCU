@@ -123,7 +123,13 @@ while True:
 
     # TODO only got 7 authors with more than 1 {'C. S. Lewis': 2, 'Charles Dickens': 2, 'Dan Brown': 3, 'George Orwell': 2, 'J. K. Rowling': 7, 'J. R. R. Tolkien': 2, 'Suzanne Collins': 2}
     if selection == "6":
-        break
+        top_authors = {}
+        for key,value in sorted(Books.items()):
+            top_authors[key] = value["sold"]
+        for i in range(1, 11):
+            for key,value in sorted(top_authors, key=top_authors.get):
+                print(i + ". " + key + " with " + value + " copies sold.") 
+
 
     if selection == "7":
         total = 0
