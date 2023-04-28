@@ -90,11 +90,11 @@ while True:
             i += 1
         print("\n")
 
-    if selection == "2":
+    elif selection == "2":
         print("This is language has the most sold books: " +
               max(Language_Dict(), key=Language_Dict().get) + "\n")
 
-    if selection == "3":
+    elif selection == "3":
         selected_language = input(
             "Please enter a language to see all the books: ")
         print("{:50s}".format("Book:") + "{:25s}".format("Author:") + "{:20s}".format(
@@ -109,7 +109,7 @@ while True:
                 print("There is no such book in that language \n")
                 break
 
-    if selection == "4":
+    elif selection == "4":
         print("There are " + str(len(Type_Dict())) + " different types of books")
         type_list = []
         for key in Type_Dict():
@@ -119,14 +119,14 @@ while True:
         print("This type has the most sold books: " +
               max(Type_Dict(), key=Type_Dict().get) + "\n")
 
-    if selection == "5":
+    elif selection == "5":
         auth_dict = {}
         for key, value in Auth_Dict().items():
             if value > 1:
                 print("{:20s}".format(str(key) + ": ") +
                       "{:4d}".format(value))
 
-    if selection == "6":
+    elif selection == "6":
         top_authors = {}
         for key, value in sorted(Books.items()):
             top_authors[key] = value["sold"]
@@ -134,7 +134,7 @@ while True:
             for key, value in sorted(top_authors.items(), key=top_authors.get):
                 print(i + ". " + key + " with " + value + " copies sold.")
 
-    if selection == "7":
+    elif selection == "7":
         total = 0
         selected_author = input(
             "Please enter an author to see the number of books sold: ")
@@ -148,7 +148,7 @@ while True:
             print(str(selected_author) +
                   " does not exist in this database. Please be sure to spell the name correctly. \n")
 
-    if selection == "8":
+    elif selection == "8":
         type_list = []
         for key in Type_Dict():
             type_list.append(key)
@@ -167,7 +167,7 @@ while True:
             print("This is not a valid type.")
         print("\n")
 
-    if selection == "9":
+    elif selection == "9":
         i = 1
         for key, value in sorted(Sold_Dict().items()):
             if i <= 7:
@@ -178,7 +178,7 @@ while True:
                 break
         print("\n")
 
-    if selection == "10":
+    elif selection == "10":
         i = 1
         Sold = []
         Types = []
@@ -192,7 +192,7 @@ while True:
         py.pie(Sold, labels=Types)
         py.show()
 
-    if selection == "11":
+    elif selection == "11":
         break
 
     else:
