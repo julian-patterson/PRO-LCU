@@ -33,7 +33,7 @@ class BankAccount:
 
     def deposit(self, amount):
         self.balance += amount
-        print("Your updated balance is: " + self.balance)
+        print("Your updated balance is: " + str(self.balance))
         self.__last_access = datetime.datetime.now()
 
     def transfer(self, other, amount):
@@ -86,7 +86,7 @@ class BankAccount:
         self.__last_access = datetime.datetime.now()
 
     def verify_pwd(self):
-        print(str(self.name))
+        print(self.name)
         verify = input("Please enter your password: ")
         if self.__password == None:
             print("You must create a password and then you may retry! \n")
@@ -116,17 +116,30 @@ print(Accounts)
 # Q2
 lea_smith = BankAccount(CODE=122156, NAME="Lea Smith",
                         BANK="TD", TYPE="Saving", BALANCE=200)
+Accounts[lea_smith.code] = {"name": lea_smith.name, "bank": lea_smith.bank,
+                            "type": lea_smith.type, "balance": lea_smith.balance}
 
 # Q3
 john_green = BankAccount(
     CODE=222552, NAME="John Green", BANK="RBC", TYPE="RBC")
+Accounts[john_green.code] = {"name": john_green.name, "bank": john_green.bank,
+                             "type": john_green.type, "balance": john_green.balance}
+
 
 # Q4
 lea_smith.create_pwd()
 
 # Q5
-BankAccount.verify_pwd(122156)
-BankAccount.deposit(122156, 100)
+for key, value in Accounts.items():
+    if key == 122156:
+        BankAccount(CODE=key, NAME=value["name"], BANK=value["bank"],
+                    TYPE=value["type"], BALANCE=value["balance"]).verify_pwd()
+        BankAccount(CODE=key, NAME=value["name"], BANK=value["bank"],
+                    TYPE=value["type"], BALANCE=value["balance"]).deposit(100)
+        print(BankAccount(
+            CODE=key, NAME=value["name"], BANK=value["bank"], TYPE=value["type"], BALANCE=value["balance"]))
+    else:
+        continue
 
 
 # Q6
