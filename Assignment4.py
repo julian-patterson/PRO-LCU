@@ -168,28 +168,36 @@ while True:
         print("\n")
 
     if selection == "9":
+        sortedSoldDict = sorted(Sold_Dict(), key=Sold_Dict().get)
         i = 1
-        for key, value in sorted(Sold_Dict().items()):
+        for key in sortedSoldDict:
             if i <= 7:
-                print(i, ". " + str(key) + " with " +
-                      str(value) + " number of copies sold.")
+                print(i, ". " + str(key))
                 i += 1
             else:
                 break
         print("\n")
 
     if selection == "10":
-        i = 1
-        Sold = []
+        x = 1
         Types = []
-        for key, value in sorted(Sold_Dict().items()):
+        for key in sorted(Sold_Dict(), key=Sold_Dict().get):
+            if x <= 7:
+                Types.append(str(key))
+                x +=1 
+            else: 
+                break 
+        
+        Sold = []
+        i = 1
+        for value in sorted(Sold_Dict().values()):
             if i <= 7:
                 Sold.append(value)
-                Types.append(key)
                 i += 1
             else:
                 break
-        py.pie(Sold, labels=Types)
+        py.pie(x=Sold, labels=Types, autopct="%1.1f%%")
+        py.title("Percentage of types of books sold")
         py.show()
 
     if selection == "11":
