@@ -167,7 +167,7 @@ while True:
             print("This is not a valid type.")
         print("\n")
 
-    if selection == "9":
+    elif selection == "9":
         sortedSoldDict = sorted(Sold_Dict(), key=Sold_Dict().get)
         i = 1
         for key in sortedSoldDict:
@@ -178,7 +178,7 @@ while True:
                 break
         print("\n")
 
-    if selection == "10":
+    elif selection == "10":
         x = 1
         Types = []
         for key in sorted(Sold_Dict(), key=Sold_Dict().get):
