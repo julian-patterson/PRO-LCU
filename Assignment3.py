@@ -21,7 +21,8 @@ plt.show()
 Operating_System = ["Windows", "OS X", "Linux", "Unknown", "ChromeOS", "iOS", "Android", "Playstation", "Other"]
 Percentages = [88.12,8.7,1.19,1.18,0.33,0.29,0.1,0.05,0.03]
 
-plt.pie(x=Percentages, labels=Operating_System, autopct="%1.1f%%")
+plt.pie(x=Percentages, labels=None)
 plt.title("Desktop Operating System Market Share")
+plt.legend(loc="lower center", ncol=5, frameon=True, labels=Operating_System)
 plt.show()
 # problem with titles being too close
