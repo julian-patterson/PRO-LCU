@@ -3,7 +3,7 @@ Julian Patterson 2131249
 420-LCU Computer Programming
 May 5th, 2023
 S. Hilal, instructor
-Assignment 4
+Assignment 3
 '''
 import matplotlib.pyplot as plt
 
@@ -34,9 +34,6 @@ plt.show()
 Operating_System2 = ["Linux", "Mixed",
                      "BSD Based", "MacOS", "N/A", "Unix", "Windows"]
 Dates = ["November 1st 2001", "June 1st 2008", "November 1st 2021"]
-November1st2001 = [39, 0, 12, 0, 5, 443, 1]
-June1st2008 = [427, 40, 1, 2, 0, 26, 4]
-November1st2021 = [500, 0, 0, 0, 0, 0, 0]
 Linux = [39, 427, 500]
 Mixed = [0, 40, 0]
 BSD_Based = [12, 1, 0]
@@ -54,5 +51,6 @@ ax.plot(Dates, nA, label="N/A")
 ax.plot(Dates, Unix, label="Unix")
 ax.plot(Dates, Windows, label="Windows")
 ax.legend()
+plt.title("Distribution of Linux-ran Supercomputers over 2001-2021")
 
 plt.show()
